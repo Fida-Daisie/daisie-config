@@ -1,0 +1,27 @@
+FROM python:3.8
+
+COPY ./daisie-template /app
+WORKDIR /app
+
+RUN apt-get clean && apt-get update && apt-get install -y locales locales-all
+
+RUN locale-gen "de_DE.UTF-8"
+RUN dpkg-reconfigure locales
+
+RUN locale -a
+
+RUN export LC_ALL="de_DE.UTF-8"
+RUN export LC_CTYPE="de_DE.UTF-8"
+
+ENV LANG de_DE.UTF-8
+ENV LANGUAGE de_DE:de
+ENV LC_ALL de_DE.UTF-8
+
+RUN set -ex && \
+    pip install -r requirements.txt && \
+    pip install -r daisie/requirements.txt && \
+    pip install gunicorn
+
+EXPOSE 8050
+
+CMD ["gunicorn", "-b", "0.0.0.0:8050", "main:server", "--timeout=600"]
