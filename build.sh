@@ -1,11 +1,5 @@
 IMAGENAME=daisie-template
 VERSION=latest
-TEAMNAME=fida-data-science
-APP_REPO=daisie-template
-
-
-# cp ./config.ini ./daisie-template/config.ini && \
-# echo "Copied config file."
 
 echo "Prepare: Done." && \
 echo "" && \
