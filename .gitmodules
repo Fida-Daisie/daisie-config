@@ -1,3 +1,6 @@
 [submodule "daisie-template"]
 	path = daisie-template
 	url = https://github.com/Fida-Daisie/daisie-template.git
+[submodule "daisie-db"]
+	path = daisie-db
+	url = https://github.com/Fida-Daisie/daisie-db.git
